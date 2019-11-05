@@ -1,0 +1,119 @@
+﻿<Window x:Class="AR.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AR"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d" Height="600" Width="1100" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" MouseDown="MainWindow_OnMouseDown">
+
+    <Window.Resources>
+        <Storyboard x:Key="CloseMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonClose">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpen">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}" />
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <Grid x:Name="GridBackground" Loaded="GridBackground_Loaded"/>
+        <Button x:Name="ButtonOpen" Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Top"
+                Background="{x:Null}"
+                BorderBrush="{x:Null}" Width="40" Height="40" Padding="0">
+            <materialDesign:PackIcon Kind="Menu" />
+        </Button>
+        <Grid x:Name="GridMenu" Width="238" HorizontalAlignment="Right" Background="#101010" 
+              RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <StackPanel>
+                <Image Height="140" Stretch="Fill" Source="Assets/air.jpg" />
+                <ListView Foreground="GhostWhite" FontFamily="IRANSans" FontSize="15" Margin="0 30 0 0" Padding="0" SelectionChanged="Selector_OnSelectionChanged">
+                    <ListViewItem x:Name="Main" Height="60" Padding="0" FlowDirection="RightToLeft" Width="238" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="HomeOutline" Width="20" Height="20" Foreground="Gray"
+                                                     Margin="5"
+                                                     VerticalAlignment="Center" />
+                            <TextBlock Text="صفحه اصلی" Margin="10" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Airline" Height="60" Padding="0" HorizontalAlignment="Center" FlowDirection="RightToLeft" Width="238" HorizontalContentAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Airport" Width="20" Height="20" Foreground="Gray" Margin="5"
+                                                     VerticalAlignment="Center" />
+                            <TextBlock Text="فرودگاه ها" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Flights" Height="60" Padding="0" HorizontalAlignment="Center" FlowDirection="RightToLeft" Width="238" HorizontalContentAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Aeroplane" Width="20" Height="20" Foreground="Gray"
+                                                     Margin="5"
+                                                     VerticalAlignment="Center" />
+                            <TextBlock Text="پرواز ها" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Passengers" Height="60" Padding="0" HorizontalAlignment="Center" FlowDirection="RightToLeft" Width="238" HorizontalContentAlignment="Center">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="ManMan" Width="20" Height="20" Foreground="Gray" Margin="5"
+                                                     VerticalAlignment="Center" />
+                            <TextBlock Text="مسافران" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Agencys" Height="60" Padding="0" HorizontalAlignment="Center" FlowDirection="RightToLeft" Width="238" HorizontalContentAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" Margin="10 0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Hail" Width="20" Height="20" Foreground="Gray" Margin="5"
+                                VerticalAlignment="Center" />
+                            <TextBlock Text="آژانس های مسافرتی" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Reserves" Height="60" Padding="0" FlowDirection="RightToLeft" Width="238" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal" Margin="10 0">
+                            <materialDesign:PackIcon Kind="Airplay" Width="20" Height="20" Foreground="Gray" Margin="5"
+                                VerticalAlignment="Center" />
+                            <TextBlock Text="رزرو ها" Margin="10" />
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+            <Button x:Name="ButtonClose" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}"
+                    BorderBrush="{x:Null}" Width="40" Height="40" Padding="0">
+                <materialDesign:PackIcon Kind="Close" />
+            </Button>
+        </Grid>
+        <Button x:Name="Close" HorizontalAlignment="Left" VerticalAlignment="Top" Background="{x:Null}"
+                BorderBrush="{x:Null}" Width="40" Height="40" Padding="0" Click="Close_Click">
+            <materialDesign:PackIcon Kind="Close" />
+        </Button>
+
+        <materialDesign:Snackbar
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Right"
+            FontFamily="IRANSans"
+            FlowDirection="RightToLeft"
+            x:Name="snack">
+            <materialDesign:SnackbarMessage
+                ActionContent="تایید" />
+        </materialDesign:Snackbar>
+    </Grid>
+</Window>

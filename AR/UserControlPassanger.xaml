@@ -1,0 +1,405 @@
+﻿<UserControl x:Class="AR.UserControlPassanger"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AR"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1100" Background="#202020">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Card.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.CheckBox.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
+                <ResourceDictionary
+                    Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Popupbox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+
+        <materialDesign:DialogHost CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="20" Width="700">
+                    <TextBlock HorizontalAlignment="Right" FontFamily="IRANSans">افزودن مسافر</TextBlock>
+                    <TextBox
+                        x:Name="PassengerNameAddTB"
+                        materialDesign:HintAssist.Hint="نام مسافر"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650"
+                        MaxLines="1"/>
+                    <TextBox
+                        x:Name="AgeAddTB"
+                        materialDesign:HintAssist.Hint="سن مسافر"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650"
+                        MaxLines="1"/>
+                    <TextBox
+                        x:Name="GenderAddTB"
+                        materialDesign:HintAssist.Hint="جنسیت"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="NationalIDAddTB"
+                        materialDesign:HintAssist.Hint="کد ملی"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="SeatAddTB"
+                        materialDesign:HintAssist.Hint="شماره صندلی"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="PostalCodeAddTB"
+                        materialDesign:HintAssist.Hint="کد پستی"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="PhoneNumberAddTB"
+                        materialDesign:HintAssist.Hint="شماره تلفن"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="EmailAddTB"
+                        materialDesign:HintAssist.Hint="ایمیل"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="AddressAddTB"
+                        materialDesign:HintAssist.Hint="آدرس"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            x:Name="PassengerAddbtn"
+                            Style="{StaticResource MaterialDesignFlatButton}" Width="60"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            FontFamily="IRANSans"
+                            Click="PassengerAddbtn_OnClick">
+                            تایید
+                        </Button>
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}" Width="60"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            FontFamily="IRANSans" Padding="0" Margin="10">
+                            بستن
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+
+            <Button
+                x:Name="btnAddPassengerShowDialog"
+                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                ToolTip="ADD" Margin="217,20,527,357" Background="Green"
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtnAddPassengerShowDialog_OnClick">
+                <materialDesign:PackIcon
+                    Kind="Add"
+                    Height="18"
+                    Width="18" />
+            </Button>
+
+        </materialDesign:DialogHost>
+
+
+        <materialDesign:DialogHost CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="20" Width="700">
+                    <TextBlock HorizontalAlignment="Right" FontFamily="IRANSans">ویرایش مسافر</TextBlock>
+                    <TextBox
+                        x:Name="PassengerNameEditTB"
+                        materialDesign:HintAssist.Hint="نام مسافر"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650"
+                        MaxLines="1"/>
+                    <TextBox
+                        x:Name="AgeEditTB"
+                        materialDesign:HintAssist.Hint="سن مسافر"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650"
+                        MaxLines="1"/>
+                    <TextBox
+                        x:Name="GenderEditTB"
+                        materialDesign:HintAssist.Hint="جنسیت"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="NationalIDEditTB"
+                        materialDesign:HintAssist.Hint="کد ملی"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="SeatEditTB"
+                        materialDesign:HintAssist.Hint="شماره صندلی"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="PostalCodeEditTB"
+                        materialDesign:HintAssist.Hint="کد پستی"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="PhoneNumberEditTB"
+                        materialDesign:HintAssist.Hint="شماره تلفن"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="EmailEditTB"
+                        materialDesign:HintAssist.Hint="ایمیل"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <TextBox
+                        x:Name="AddressEditTB"
+                        materialDesign:HintAssist.Hint="آدرس"
+                        HorizontalAlignment="Right"
+                        HorizontalContentAlignment="Right"
+                        FontFamily="IRANSans"
+                        Margin="20"
+                        Width="650" MaxLines="5" />
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            x:Name="PassengerEditbtn"
+                            Style="{StaticResource MaterialDesignFlatButton}" Width="60"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            FontFamily="IRANSans"
+                            Click="PassengerEditbtn_OnClick">
+                            تایید
+                        </Button>
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}" Width="60"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            FontFamily="IRANSans" Padding="0" Margin="10">
+                            بستن
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+
+
+            <Button
+                Click="BtnEditShowDialog_OnClick"
+                x:Name="btnEditShowDialog"
+                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                ToolTip="EDIT" Margin="139,20,605,357" Background="DarkOrange" HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                >
+                <materialDesign:PackIcon
+                    Kind="Edit"
+                    Height="18"
+                    Width="18" />
+            </Button>
+
+
+        </materialDesign:DialogHost>
+
+
+        <materialDesign:DialogHost CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="20">
+                    <TextBlock HorizontalAlignment="Right" FontFamily="IRANSans">حذف مسافر</TextBlock>
+                    <Separator />
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="IRANSans">
+                        مورد انتخاب شده حذف شود؟
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <Button
+                            x:Name="PassengerDeletebtn"
+                            Style="{StaticResource MaterialDesignFlatButton}" Width="60"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            FontFamily="IRANSans"
+                            HorizontalAlignment="Right"
+                            Click="PassengerDeletebtn_OnClick">
+                            بله
+                        </Button>
+                        <Button
+                            Style="{StaticResource MaterialDesignFlatButton}" Width="60"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
+                            FontFamily="IRANSans"
+                            HorizontalAlignment="Left">
+                            خیر
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+
+
+            <Button
+                Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
+                ToolTip="DELETE" Margin="63,20,681,357" HorizontalAlignment="Left" VerticalAlignment="Top"
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                Background="Red">
+                <materialDesign:PackIcon
+                    Kind="DeleteForever"
+                    Height="18"
+                    Width="18" />
+            </Button>
+
+
+        </materialDesign:DialogHost>
+
+
+        <materialDesign:PackIcon
+            Kind="Magnify"
+            Opacity=".56"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            Margin="0,32,64,0" />
+        <TextBox
+            CaretBrush="White"
+            x:Name="PassengerSearchTB"
+            Margin="0,24,84,0"
+            MaxLength="50"
+            Foreground="White"
+            materialDesign:HintAssist.Hint="جستجو..."
+            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+            BorderThickness="0"
+            MinWidth="200"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            FontFamily="IRANSans"
+            FlowDirection="RightToLeft" TextChanged="PassengerSearchTB_OnTextChanged"
+            />
+        <TextBlock Text="پرواز" Foreground="White" FontFamily="IRANSans" FontSize="15" HorizontalAlignment="Center"
+                   Margin="500,27,440,0" Height="21" VerticalAlignment="Top" Padding="0"/>
+
+        <DataGrid Name="dg"
+                  Background="WhiteSmoke"
+                  FontFamily="IRANSans"
+                  Margin="50,80,56,50"
+                  ItemsSource="{Binding Source=myDataSet}"
+                  CanUserSortColumns="True"
+                  CanUserAddRows="False"
+                  AutoGenerateColumns="False"
+                  materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                  materialDesign:DataGridAssist.ColumnHeaderPadding="8" FlowDirection="RightToLeft">
+            <DataGrid.Columns>
+
+                <DataGridTextColumn
+                    Binding="{Binding PassengerName}"
+                    Header="نام مسافر"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"
+                    FontFamily="IRANSans" />
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding Age}"
+                    Header="سن مسافر"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding Gender}"
+                    Header="جنسیت"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding NationalID}"
+                    Header="کد ملی"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding Seat}"
+                    Header="شماره صندلی"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding PostalCode}"
+                    Header="کد پستی"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding PhoneNumber}"
+                    Header="شماره تلفن"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding Email}"
+                    Header="ایمیل"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+
+                <materialDesign:MaterialDataGridTextColumn
+                    Binding="{Binding Address}"
+                    Header="آدرس"
+                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
+                    FontFamily="IRANSans" />
+            </DataGrid.Columns>
+
+
+        </DataGrid>
+
+        <materialDesign:Snackbar
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Right"
+            FontFamily="IRANSans"
+            FlowDirection="RightToLeft"
+            x:Name="snack">
+            <materialDesign:SnackbarMessage
+                ActionContent="تایید" />
+        </materialDesign:Snackbar>
+
+    </Grid>
+
+</UserControl>
